@@ -74,8 +74,11 @@ const Navigation = () => {
 
           {/* Mobile menu button */}
           <button
-            className="md:hidden p-2 text-gray-light"
+            className="md:hidden p-2 text-gray-light transition-colors hover:text-mint"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-menu-panel"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -83,36 +86,41 @@ const Navigation = () => {
       </div>
 
       {/* Mobile menu */}
-      {isMobileMenuOpen && (
-        <div className="md:hidden bg-navy/95 backdrop-blur-xl border-t border-white/5">
-          <div className="px-6 py-4 space-y-4">
-            <button
-              onClick={() => scrollToSection('dashboard')}
-              className="block w-full text-left text-gray-text hover:text-gray-light transition-colors py-2"
-            >
-              Product
-            </button>
-            <button
-              onClick={() => scrollToSection('pricing')}
-              className="block w-full text-left text-gray-text hover:text-gray-light transition-colors py-2"
-            >
-              Pricing
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="block w-full text-left text-gray-text hover:text-gray-light transition-colors py-2"
-            >
-              Contact
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="btn-primary w-full text-center"
-            >
-              Request Demo
-            </button>
-          </div>
+      <div
+        id="mobile-menu-panel"
+        className={`md:hidden overflow-hidden border-t border-white/5 bg-navy/95 backdrop-blur-xl transition-[max-height,opacity,transform] duration-300 ease-out ${
+          isMobileMenuOpen
+            ? 'max-h-[340px] opacity-100 translate-y-0'
+            : 'max-h-0 opacity-0 -translate-y-2 pointer-events-none'
+        }`}
+      >
+        <div className="px-6 py-4 space-y-4">
+          <button
+            onClick={() => scrollToSection('dashboard')}
+            className="block w-full text-left text-gray-text hover:text-gray-light transition-colors py-2"
+          >
+            Product
+          </button>
+          <button
+            onClick={() => scrollToSection('pricing')}
+            className="block w-full text-left text-gray-text hover:text-gray-light transition-colors py-2"
+          >
+            Pricing
+          </button>
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="block w-full text-left text-gray-text hover:text-gray-light transition-colors py-2"
+          >
+            Contact
+          </button>
+          <button
+            onClick={() => scrollToSection('contact')}
+            className="btn-primary w-full text-center"
+          >
+            Request Demo
+          </button>
         </div>
-      )}
+      </div>
     </nav>
   );
 };

@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { ArrowRight, ChevronRight } from 'lucide-react';
+import { prefersReducedMotion } from '../lib/prefers-reduced-motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +22,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
     const satellites = satelliteRefs.current.filter(Boolean);
     const headline = headlineRef.current;
 
-    if (!section || !heroCard) return;
+    if (!section || !heroCard || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       // Initial load animation
@@ -154,7 +155,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
         <div
           key={i}
           ref={el => { satelliteRefs.current[i] = el; }}
-          className="absolute glass-card animate-float hidden lg:block"
+          className="absolute hidden lg:block"
           style={{
             left: pos.left,
             top: pos.top,
@@ -163,7 +164,9 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
             animationDelay: `${pos.delay}s`,
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-mint/5 to-transparent" />
+          <div className="relative w-full h-full glass-card animate-float">
+            <div className="absolute inset-0 bg-gradient-to-br from-mint/5 to-transparent" />
+          </div>
         </div>
       ))}
 

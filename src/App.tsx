@@ -3,6 +3,7 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './App.css';
 import Navigation from './components/Navigation';
+import { prefersReducedMotion } from './lib/prefers-reduced-motion';
 import HeroSection from './sections/HeroSection';
 import DashboardSection from './sections/DashboardSection';
 import MetricsSection from './sections/MetricsSection';
@@ -19,6 +20,8 @@ function App() {
   const mainRef = useRef<HTMLDivElement>(null);
 
   useLayoutEffect(() => {
+    if (prefersReducedMotion()) return;
+
     // Wait for all sections to mount and create their ScrollTriggers
     const timer = setTimeout(() => {
       const pinned = ScrollTrigger.getAll()
