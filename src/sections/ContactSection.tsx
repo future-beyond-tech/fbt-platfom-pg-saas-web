@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect, useState } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Mail, Phone, MapPin, Send, ArrowRight } from 'lucide-react';
+import { prefersReducedMotion } from '../lib/prefers-reduced-motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -24,7 +25,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
     const section = sectionRef.current;
     const card = cardRef.current;
 
-    if (!section || !card) return;
+    if (!section || !card || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       gsap.fromTo(card,
@@ -108,7 +109,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
                   </div>
                   <div>
                     <p className="text-xs text-gray-text uppercase tracking-wider mb-0.5">Location</p>
-                    <p className="text-sm text-gray-light">Bangalore, India | Remote-first team</p>
+                    <p className="text-sm text-gray-light">Hyderabad, India | Remote-first team</p>
                   </div>
                 </div>
               </div>

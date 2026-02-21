@@ -2,6 +2,7 @@ import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { RefreshCw, Bell } from 'lucide-react';
+import { prefersReducedMotion } from '../lib/prefers-reduced-motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -21,7 +22,7 @@ const MetricsSection = ({ className = '' }: MetricsSectionProps) => {
     const leftCard = leftCardRef.current;
     const rightCard = rightCardRef.current;
 
-    if (!section || !mainCard || !leftCard || !rightCard) return;
+    if (!section || !mainCard || !leftCard || !rightCard || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       const scrollTl = gsap.timeline({

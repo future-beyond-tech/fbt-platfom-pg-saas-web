@@ -1,7 +1,8 @@
 import { useRef, useLayoutEffect } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Check, Sparkles, Building, Infinity } from 'lucide-react';
+import { Check, Sparkles, Building, Infinity as InfinityIcon } from 'lucide-react';
+import { prefersReducedMotion } from '../lib/prefers-reduced-motion';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -19,7 +20,7 @@ const PricingSection = ({ className = '' }: PricingSectionProps) => {
     const heading = headingRef.current;
     const cards = cardsRef.current.filter(Boolean);
 
-    if (!section || !heading || cards.length === 0) return;
+    if (!section || !heading || cards.length === 0 || prefersReducedMotion()) return;
 
     const ctx = gsap.context(() => {
       // Heading animation
@@ -102,7 +103,7 @@ const PricingSection = ({ className = '' }: PricingSectionProps) => {
       price: 'Custom',
       period: '',
       description: 'For large chains & franchises',
-      icon: Infinity,
+      icon: InfinityIcon,
       features: [
         'Unlimited properties',
         'Custom integrations + SLA',
