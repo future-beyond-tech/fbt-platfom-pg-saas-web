@@ -109,7 +109,7 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
                   </div>
                   <div>
                     <p className="text-xs text-gray-text uppercase tracking-wider mb-0.5">Location</p>
-                    <p className="text-sm text-gray-light">Bangalore, India | Remote-first team</p>
+                    <p className="text-sm text-gray-light">Hyderabad, India | Remote-first team</p>
                   </div>
                 </div>
               </div>
