@@ -1,0 +1,56 @@
+/* App-specific styles */
+
+/* Ensure smooth scrolling behavior */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Remove default body margin */
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+/* Ensure full-width sections */
+#root {
+  width: 100%;
+  min-height: 100vh;
+}
+
+/* Pin spacer fix for GSAP */
+.pin-spacer {
+  pointer-events: none !important;
+}
+
+.pin-spacer > * {
+  pointer-events: auto !important;
+}
+
+/* Responsive typography adjustments */
+@media (max-width: 640px) {
+  .stage-container {
+    width: 94vw !important;
+    height: 80vh !important;
+  }
+  
+  .glass-card {
+    border-radius: 20px !important;
+  }
+}
+
+/* Reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .animate-float,
+  .animate-float-delayed {
+    animation: none !important;
+  }
+}
