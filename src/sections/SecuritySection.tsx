@@ -97,7 +97,32 @@ const SecuritySection = ({ className = '' }: SecuritySectionProps) => {
       id="security"
       className={`section-pinned bg-navy ${className}`}
     >
-      <div className="stage-container">
+      <div className="stage-container flex flex-col lg:block justify-center lg:justify-start">
+        {/* Mobile/Tablet: Info cards as a row above main card */}
+        <div className="flex lg:hidden gap-3 sm:gap-4 mb-4 px-1">
+          <div className="flex-1 glass-card p-3 sm:p-4">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-mint/10 flex items-center justify-center mb-2 sm:mb-3">
+              <Shield className="w-4 h-4 sm:w-5 sm:h-5 text-mint" />
+            </div>
+            <h3 className="font-display text-xs sm:text-sm font-semibold text-gray-light mb-1">
+              Role-Based Access
+            </h3>
+            <p className="text-[10px] sm:text-xs text-gray-text leading-relaxed line-clamp-2">
+              Role-specific access controls.
+            </p>
+          </div>
+          <div className="flex-1 glass-card p-3 sm:p-4">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-mint/10 flex items-center justify-center mb-2 sm:mb-3">
+              <Lock className="w-4 h-4 sm:w-5 sm:h-5 text-mint" />
+            </div>
+            <h3 className="font-display text-xs sm:text-sm font-semibold text-gray-light mb-1">
+              Immutable Records
+            </h3>
+            <p className="text-[10px] sm:text-xs text-gray-text leading-relaxed line-clamp-2">
+              Tamper-proof invoice history.
+            </p>
+          </div>
+        </div>
         {/* Left info card */}
         <div
           ref={leftCardRef}
@@ -133,7 +158,7 @@ const SecuritySection = ({ className = '' }: SecuritySectionProps) => {
         {/* Main security card */}
         <div
           ref={mainCardRef}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] lg:w-[min(72vw,1080px)] h-[50vh] lg:h-[min(60vh,540px)] glass-card overflow-hidden"
+          className="relative lg:absolute left-1/2 top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 w-[92vw] lg:w-[min(72vw,1080px)] h-[50vh] sm:h-[55vh] lg:h-[min(60vh,540px)] min-h-[300px] sm:min-h-[340px] glass-card overflow-hidden"
         >
           {/* Neon border */}
           <div
@@ -143,7 +168,7 @@ const SecuritySection = ({ className = '' }: SecuritySectionProps) => {
           />
 
           {/* Content overlay */}
-          <div className="absolute top-0 left-0 right-0 p-6 lg:p-10 z-10 bg-gradient-to-b from-navy/90 via-navy/70 to-transparent">
+          <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 lg:p-10 z-10 bg-gradient-to-b from-navy/90 via-navy/70 to-transparent">
             <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-light mb-3">
               Built for trust.
             </h2>

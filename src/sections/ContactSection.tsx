@@ -70,9 +70,9 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
       <div className="w-full px-6 lg:px-12 max-w-5xl mx-auto">
         <div
           ref={cardRef}
-          className="glass-card p-8 lg:p-12"
+          className="glass-card p-6 sm:p-8 lg:p-12"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-16">
             {/* Left side - Contact info */}
             <div>
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-light mb-4">
@@ -211,10 +211,10 @@ const ContactSection = ({ className = '' }: ContactSectionProps) => {
         <footer className="mt-16 pt-8 border-t border-white/5">
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
             <div className="font-display text-xl font-bold text-gray-light">
-              FBT
+              RENT FLOW
             </div>
             <p className="text-xs text-gray-text">
-              © FBT PG Platform. All rights reserved.
+              © RENT FLOW. All rights reserved.
             </p>
             <div className="flex items-center gap-6">
               <button className="text-xs text-gray-text hover:text-gray-light transition-colors">

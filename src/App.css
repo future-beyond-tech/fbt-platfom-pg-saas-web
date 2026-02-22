@@ -30,8 +30,9 @@ body {
 /* Responsive typography adjustments */
 @media (max-width: 640px) {
   .stage-container {
-    width: 94vw !important;
-    height: 80vh !important;
+    width: 100% !important;
+    height: auto !important;
+    min-height: auto !important;
   }
   
   .glass-card {

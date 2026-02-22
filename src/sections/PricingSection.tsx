@@ -135,7 +135,7 @@ const PricingSection = ({ className = '' }: PricingSectionProps) => {
         </div>
 
         {/* Pricing cards */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
           {plans.map((plan, i) => (
             <div
               key={plan.name}
@@ -182,7 +182,7 @@ const PricingSection = ({ className = '' }: PricingSectionProps) => {
 
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-                className={`w-full py-3 rounded-full font-medium transition-all duration-300 ${
+                className={`w-full min-h-[44px] py-3 rounded-full font-medium transition-all duration-300 ${
                   plan.popular
                     ? 'bg-mint text-navy hover:bg-mint-light'
                     : 'bg-white/5 text-gray-light hover:bg-white/10 border border-white/10'

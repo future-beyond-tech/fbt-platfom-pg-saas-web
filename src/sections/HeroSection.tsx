@@ -134,14 +134,14 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
   }, []);
 
   const satellitePositions = [
-    { left: '8%', top: '12%', width: '140px', height: '90px', delay: 0 },
-    { left: '82%', top: '14%', width: '120px', height: '80px', delay: 0.5 },
-    { left: '5%', top: '68%', width: '160px', height: '100px', delay: 1 },
-    { left: '85%', top: '66%', width: '130px', height: '85px', delay: 1.5 },
-    { left: '18%', top: '84%', width: '110px', height: '70px', delay: 2 },
-    { left: '72%', top: '86%', width: '100px', height: '65px', delay: 2.5 },
-    { left: '3%', top: '38%', width: '90px', height: '60px', delay: 3 },
-    { left: '90%', top: '42%', width: '95px', height: '65px', delay: 3.5 },
+    { left: '4%', top: '10%', width: '100px', height: '70px', delay: 0, mobile: true },
+    { left: '78%', top: '12%', width: '90px', height: '65px', delay: 0.5, mobile: true },
+    { left: '2%', top: '72%', width: '110px', height: '75px', delay: 1, mobile: true },
+    { left: '80%', top: '70%', width: '95px', height: '65px', delay: 1.5, mobile: true },
+    { left: '12%', top: '88%', width: '85px', height: '55px', delay: 2, mobile: false },
+    { left: '68%', top: '90%', width: '80px', height: '50px', delay: 2.5, mobile: false },
+    { left: '2%', top: '35%', width: '70px', height: '50px', delay: 3, mobile: false },
+    { left: '88%', top: '40%', width: '75px', height: '55px', delay: 3.5, mobile: false },
   ];
 
   return (
@@ -150,12 +150,12 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
       id="hero"
       className={`section-pinned bg-navy ${className}`}
     >
-      {/* Satellite cards */}
+      {/* Satellite cards - responsive visibility */}
       {satellitePositions.map((pos, i) => (
         <div
           key={i}
           ref={el => { satelliteRefs.current[i] = el; }}
-          className="absolute hidden lg:block"
+          className={`absolute ${pos.mobile ? 'block' : 'hidden md:block'}`}
           style={{
             left: pos.left,
             top: pos.top,
@@ -173,12 +173,16 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
       {/* Hero card */}
       <div
         ref={heroCardRef}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] lg:w-[min(52vw,760px)] lg:h-[min(28vh,260px)] glass-card neon-border flex flex-col justify-center p-8 lg:p-12"
+        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 
+                   w-[92vw] max-w-[520px] sm:max-w-[600px] lg:max-w-[760px]
+                   min-h-[320px] sm:min-h-[280px] lg:min-h-[260px]
+                   glass-card neon-border flex flex-col justify-center 
+                   p-6 sm:p-8 lg:p-12"
       >
         <div className="relative z-10">
           <h1
             ref={headlineRef}
-            className="font-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-light leading-tight mb-4 lg:mb-6"
+            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-gray-light leading-tight mb-3 sm:mb-4 lg:mb-6"
           >
             <span className="word inline-block">Modular</span>{' '}
             <span className="word inline-block">Living.</span>
@@ -187,21 +191,21 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
             <span className="word inline-block text-mint">Control.</span>
           </h1>
           
-          <p className="text-sm lg:text-base text-gray-text max-w-lg mb-6 lg:mb-8 leading-relaxed">
+          <p className="text-sm sm:text-base text-gray-text max-w-md lg:max-w-lg mb-5 sm:mb-6 lg:mb-8 leading-relaxed">
             A multi-tenant platform for PG owners—rooms, tenants, billing, and compliance in one system.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-3 lg:gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
             <button 
               onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-primary flex items-center justify-center gap-2 text-sm lg:text-base"
+              className="btn-primary flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               Request Demo
               <ArrowRight size={16} />
             </button>
             <button 
               onClick={() => document.getElementById('pricing')?.scrollIntoView({ behavior: 'smooth' })}
-              className="btn-secondary flex items-center justify-center gap-2 text-sm lg:text-base"
+              className="btn-secondary flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               View Pricing
               <ChevronRight size={16} />
@@ -210,7 +214,7 @@ const HeroSection = ({ className = '' }: HeroSectionProps) => {
         </div>
         
         {/* Background UI image */}
-        <div className="absolute inset-0 opacity-20 pointer-events-none">
+        <div className="absolute inset-0 opacity-15 sm:opacity-20 pointer-events-none">
           <img
             src="/images/hero_dashboard_ui.jpg"
             alt=""

@@ -57,7 +57,7 @@
 
 @layer components {
   .glass-card {
-    @apply relative rounded-[28px] overflow-hidden;
+    @apply relative rounded-[20px] sm:rounded-[24px] lg:rounded-[28px] overflow-hidden;
     background: rgba(16, 22, 34, 0.72);
     border: 1px solid rgba(244, 246, 250, 0.08);
     box-shadow: 0 28px 80px rgba(0, 0, 0, 0.45);
@@ -114,7 +114,8 @@
   }
   
   .btn-primary {
-    @apply px-6 py-3 rounded-full font-medium transition-all duration-300;
+    @apply px-5 sm:px-6 py-3 sm:py-3.5 rounded-full font-medium transition-all duration-300;
+    @apply min-h-[44px] sm:min-h-[48px];
     background: transparent;
     border: 1.5px solid #2EE9A8;
     color: #2EE9A8;
@@ -127,7 +128,8 @@
   }
   
   .btn-secondary {
-    @apply px-6 py-3 rounded-full font-medium transition-all duration-300;
+    @apply px-5 sm:px-6 py-3 sm:py-3.5 rounded-full font-medium transition-all duration-300;
+    @apply min-h-[44px] sm:min-h-[48px];
     background: rgba(244, 246, 250, 0.08);
     border: 1.5px solid rgba(244, 246, 250, 0.15);
     color: #F4F6FA;
@@ -139,14 +141,56 @@
   }
   
   .section-pinned {
-    @apply relative w-screen h-screen overflow-hidden;
+    @apply relative w-full overflow-hidden;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 600px;
+    max-height: 1200px;
+  }
+  
+  @media (max-width: 640px) {
+    .section-pinned {
+      min-height: 100svh;
+      max-height: none;
+    }
   }
   
   .stage-container {
     @apply absolute left-1/2 top-1/2;
-    width: 86vw;
-    height: 84vh;
+    width: 94vw;
+    height: auto;
+    min-height: 70vh;
+    max-height: 85vh;
     transform: translate(-50%, -50%);
+  }
+
+  @media (max-width: 640px) {
+    .stage-container {
+      position: relative;
+      left: auto;
+      top: auto;
+      transform: none;
+      width: 100%;
+      height: auto;
+      min-height: auto;
+      max-height: none;
+      padding: 0 0.5rem;
+    }
+  }
+  
+  @media (min-width: 641px) {
+    .stage-container {
+      width: 90vw;
+      height: 80vh;
+      min-height: auto;
+    }
+  }
+  
+  @media (min-width: 1025px) {
+    .stage-container {
+      width: 86vw;
+      height: 84vh;
+    }
   }
   
   .micro-label {
