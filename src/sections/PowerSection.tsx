@@ -86,11 +86,37 @@ const PowerSection = ({ className = '' }: PowerSectionProps) => {
       id="power"
       className={`section-pinned bg-navy ${className}`}
     >
-      <div className="stage-container">
-        {/* Left info card */}
+      <div className="stage-container flex flex-col lg:block justify-center lg:justify-start">
+        {/* Mobile/Tablet: Info cards as a row above main card */}
+        <div className="flex lg:hidden gap-3 sm:gap-4 mb-4 px-1">
+          <div className="flex-1 glass-card p-3 sm:p-4">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-mint/10 flex items-center justify-center mb-2 sm:mb-3">
+              <Zap className="w-4 h-4 sm:w-5 sm:h-5 text-mint" />
+            </div>
+            <h3 className="font-display text-xs sm:text-sm font-semibold text-gray-light mb-1">
+              Meter Readings
+            </h3>
+            <p className="text-[10px] sm:text-xs text-gray-text leading-relaxed line-clamp-2">
+              Upload or enter readings.
+            </p>
+          </div>
+          <div className="flex-1 glass-card p-3 sm:p-4">
+            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl bg-mint/10 flex items-center justify-center mb-2 sm:mb-3">
+              <Scale className="w-4 h-4 sm:w-5 sm:h-5 text-mint" />
+            </div>
+            <h3 className="font-display text-xs sm:text-sm font-semibold text-gray-light mb-1">
+              Fair Split
+            </h3>
+            <p className="text-[10px] sm:text-xs text-gray-text leading-relaxed line-clamp-2">
+              Divide by sharing type.
+            </p>
+          </div>
+        </div>
+
+        {/* Left info card - Desktop only */}
         <div
           ref={leftCardRef}
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-[18vw] min-w-[160px] max-w-[240px] h-[22vh] min-h-[140px] glass-card p-5 lg:p-6 hidden lg:flex flex-col justify-center"
+          className="hidden lg:flex absolute left-0 top-1/2 -translate-y-1/2 w-[18vw] min-w-[160px] max-w-[240px] h-[22vh] min-h-[140px] glass-card p-5 lg:p-6 flex-col justify-center"
         >
           <div className="w-10 h-10 rounded-xl bg-mint/10 flex items-center justify-center mb-4">
             <Zap className="w-5 h-5 text-mint" />
@@ -103,10 +129,10 @@ const PowerSection = ({ className = '' }: PowerSectionProps) => {
           </p>
         </div>
 
-        {/* Right info card */}
+        {/* Right info card - Desktop only */}
         <div
           ref={rightCardRef}
-          className="absolute right-0 top-1/2 -translate-y-1/2 w-[18vw] min-w-[160px] max-w-[240px] h-[22vh] min-h-[140px] glass-card p-5 lg:p-6 hidden lg:flex flex-col justify-center"
+          className="hidden lg:flex absolute right-0 top-1/2 -translate-y-1/2 w-[18vw] min-w-[160px] max-w-[240px] h-[22vh] min-h-[140px] glass-card p-5 lg:p-6 flex-col justify-center"
         >
           <div className="w-10 h-10 rounded-xl bg-mint/10 flex items-center justify-center mb-4">
             <Scale className="w-5 h-5 text-mint" />
@@ -122,11 +148,15 @@ const PowerSection = ({ className = '' }: PowerSectionProps) => {
         {/* Main power card */}
         <div
           ref={mainCardRef}
-          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[92vw] lg:w-[min(72vw,1080px)] h-[50vh] lg:h-[min(60vh,540px)] glass-card overflow-hidden"
+          className="relative lg:absolute lg:left-1/2 lg:top-1/2 lg:-translate-x-1/2 lg:-translate-y-1/2 
+                     w-full lg:w-[min(72vw,1080px)] 
+                     h-[45vh] sm:h-[50vh] lg:h-[min(60vh,540px)] 
+                     min-h-[280px] sm:min-h-[320px]
+                     glass-card overflow-hidden"
         >
           {/* Content overlay */}
-          <div className="absolute top-0 left-0 right-0 p-6 lg:p-10 z-10 bg-gradient-to-b from-navy/90 via-navy/70 to-transparent">
-            <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-light mb-3">
+          <div className="absolute top-0 left-0 right-0 p-4 sm:p-6 lg:p-10 z-10 bg-gradient-to-b from-navy/90 via-navy/70 to-transparent">
+            <h2 className="font-display text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-gray-light mb-2 sm:mb-3">
               Power bills, split fairly.
             </h2>
             <p className="text-sm lg:text-base text-gray-text max-w-xl leading-relaxed">

@@ -41,7 +41,7 @@ const Navigation = () => {
               window.scrollTo({ top: 0, behavior: 'smooth' });
             }}
           >
-            FBT
+            RENT FLOW
           </a>
 
           {/* Desktop Navigation */}
